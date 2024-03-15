@@ -1,0 +1,31 @@
+jwt:
+  secret: 984hg493gh0439rthr0429uruj2309yh937gc763fe87t3f89723gf
+  lifetime: 30m
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/template-users?serverTimezone=UTC}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+
+  flyway:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/template-users?serverTimezone=UTC}
+    user: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    enabled: true
+    schemas: template-users
+    locations: classpath:db/migration
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: yahor.dev@gmail.com
+    password: f g k u z x j e f u l p y d u k
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  main:
+    allow-circular-references: true
