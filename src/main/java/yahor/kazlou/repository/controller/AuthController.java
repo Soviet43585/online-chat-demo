@@ -1,4 +1,4 @@
-package yahor.kazlou.controller;
+package yahor.kazlou.repository.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,6 @@ import yahor.kazlou.service.UserService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/demo")
 public class AuthController {
 
     private final UserService userService;

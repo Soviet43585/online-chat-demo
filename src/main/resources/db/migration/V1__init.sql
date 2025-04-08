@@ -1,11 +1,26 @@
-CREATE TABLE `User`
-(
- `id`       int NOT NULL AUTO_INCREMENT ,
- `login`    nvarchar(50) NOT NULL UNIQUE ,
- `password` nvarchar(100) NOT NULL ,
- `email`    nvarchar(100) NOT NULL UNIQUE ,
- `role`     nvarchar(50) NOT NULL DEFAULT 'ROLE_USER',
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS verification_code;
+DROP TABLE IF EXISTS Company;
 
-PRIMARY KEY auto_increment(`id`),
-CONSTRAINT verify_role CHECK ( role IN ('ROLE_ADMIN', 'ROLE_USER'))
-);
+
+CREATE TABLE User (
+id CHAR(36) PRIMARY KEY NOT NULL UNIQUE,
+login VARCHAR(155) NOT NULL UNIQUE,
+email VARCHAR(155) NOT NULL UNIQUE,
+username VARCHAR(155) NOT NULL,
+password VARCHAR(64) NOT NULL,
+role VARCHAR(32) NOT NULL,
+company_id CHAR(36));
+
+CREATE TABLE verification_code (
+email VARCHAR(155) PRIMARY KEY NOT NULL UNIQUE,
+code VARCHAR(6) NOT NULL,
+is_verified BOOLEAN NOT NULL DEFAULT 0);
+
+CREATE TABLE Company (
+id CHAR(36) PRIMARY KEY NOT NULL UNIQUE,
+name VARCHAR(155) NOT NULL,
+description VARCHAR(4096) NOT NULL);
+
+ALTER TABLE User ADD CONSTRAINT User_email_verification_code_email FOREIGN KEY (email) REFERENCES verification_code(email);
+ALTER TABLE User ADD CONSTRAINT User_company_id_Company_id FOREIGN KEY (company_id) REFERENCES Company(id);

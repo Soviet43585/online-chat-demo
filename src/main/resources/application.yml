@@ -4,16 +4,16 @@ jwt:
 
 spring:
   datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/template-users?serverTimezone=UTC}
+    url: ${DB_URL:jdbc:mysql://localhost:3306/chat-demo?serverTimezone=UTC}
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:root}
 
   flyway:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/template-users?serverTimezone=UTC}
+    url: ${DB_URL:jdbc:mysql://localhost:3306/chat-demo?serverTimezone=UTC}
     user: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:root}
     enabled: true
-    schemas: template-users
+    schemas: chat-demo
     locations: classpath:db/migration
 
   mail:

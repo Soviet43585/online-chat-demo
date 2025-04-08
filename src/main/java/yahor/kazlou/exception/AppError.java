@@ -1,6 +1,7 @@
 package yahor.kazlou.exception;
 
 import lombok.Data;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Date;
 
